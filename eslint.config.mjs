@@ -25,8 +25,8 @@ export default [
       globals: {
         ...reactNative.environments['react-native']['react-native'],
       },
-
       parser: babelParser,
+      sourceType: 'module',
     },
     settings: {
       react: {
