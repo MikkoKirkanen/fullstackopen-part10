@@ -31,10 +31,9 @@ const styles = StyleSheet.create({
     color: theme.colors.textSecondary,
   },
   langLabel: {
+    ...theme.primaryBtn,
     alignSelf: 'flex-start',
     padding: 6,
-    borderRadius: 6,
-    ...theme.primaryBtn,
   },
   stats: {
     display: 'flex',

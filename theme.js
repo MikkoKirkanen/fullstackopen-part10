@@ -1,3 +1,9 @@
+const defaultPrimary = {
+  color: '#fff',
+  padding: 16,
+  borderRadius: 6,
+};
+
 const theme = {
   colors: {
     bodyBgColor: '#212529',
@@ -10,8 +16,16 @@ const theme = {
     text: '#fff',
   },
   primaryBtn: {
+    ...defaultPrimary,
     backgroundColor: '#0d6efd',
-    color: '#fff',
+    textAlign: 'center',
+  },
+  textInput: {
+    ...defaultPrimary,
+    borderWidth: 1,
+    borderColor: '#586069',
+    placeholderTextColor: '#586069',
+    backgroundColor: '#1b1f22',
   },
   fontSizes: {
     body: 14,
