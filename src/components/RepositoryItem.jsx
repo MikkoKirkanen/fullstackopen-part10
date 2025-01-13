@@ -1,6 +1,7 @@
-import { Image, StyleSheet, Text, View } from 'react-native';
+import { Image, StyleSheet, View } from 'react-native';
 import theme from '../../theme';
 import StatText from './StatText';
+import Text from './Text';
 
 const styles = StyleSheet.create({
   flexContainer: {
@@ -25,7 +26,6 @@ const styles = StyleSheet.create({
   },
   textBold: {
     fontWeight: theme.fontWeights.bold,
-    color: theme.colors.text,
   },
   textSecondary: {
     color: theme.colors.textSecondary,

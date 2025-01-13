@@ -1,5 +1,6 @@
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import theme from '../../theme';
+import Text from './Text';
 
 const styles = StyleSheet.create({
   container: {
@@ -10,7 +11,6 @@ const styles = StyleSheet.create({
   },
   value: {
     fontWeight: theme.fontWeights.bold,
-    color: theme.colors.text,
   },
   label: {
     color: theme.colors.textSecondary,
@@ -21,7 +21,7 @@ const StatText = ({ value, label }) => {
   const getValue = (v) => {
     if (v < 1000) return v;
 
-    return (v / 1000).toFixed(1) + 'k';
+    return `${(v / 1000).toFixed(1)}k`;
   };
 
   return (
