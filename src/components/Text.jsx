@@ -8,7 +8,13 @@ const styles = StyleSheet.create({
 });
 
 const Text = ({ style, fontSize, fontWeight, color, ...props }) => {
-  const textStyle = [styles.text, style, { fontSize }, { fontWeight }, color];
+  const textStyle = [
+    styles.text,
+    style,
+    { fontSize },
+    { fontWeight },
+    { color },
+  ];
 
   return <NativeText style={textStyle} {...props} />;
 };
