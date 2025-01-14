@@ -1,20 +1,15 @@
 import { Text as NativeText, StyleSheet } from 'react-native';
 import theme from '../../theme';
 
-const styles = StyleSheet.create({
-  text: {
-    color: theme.colors.text,
-  },
+const defaultStyle = StyleSheet.create({
+  color: theme.colors.text,
 });
 
 const Text = ({ style, fontSize, fontWeight, color, ...props }) => {
-  const textStyle = [
-    styles.text,
-    style,
-    { fontSize },
-    { fontWeight },
-    { color },
-  ];
+  const textStyle = [defaultStyle, style];
+  if (fontSize) textStyle.push({ fontSize });
+  if (fontWeight) textStyle.push({ fontWeight });
+  if (color) textStyle.push({ color });
 
   return <NativeText style={textStyle} {...props} />;
 };
