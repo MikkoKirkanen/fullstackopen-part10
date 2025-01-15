@@ -13,6 +13,7 @@
   "dependencies": {
     "@apollo/client": "^3.12.6",
     "@expo/metro-runtime": "~4.0.0",
+    "dotenv": "^16.4.7",
     "expo": "~52.0.25",
     "expo-cli": "^6.3.12",
     "expo-status-bar": "~2.0.1",
