@@ -4,6 +4,7 @@ import AppBar from './AppBar';
 import theme from '../../theme';
 import { Route, Routes } from 'react-router-native';
 import SignIn from './SignIn';
+import useMe from '../hooks/useMe';
 
 const styles = StyleSheet.create({
   container: {
@@ -15,9 +16,13 @@ const styles = StyleSheet.create({
 });
 
 const Main = () => {
+  const { data } = useMe();
+
+  const user = data?.me;
+
   return (
     <View style={styles.container}>
-      <AppBar />
+      <AppBar user={user} />
       <Routes>
         <Route path='/' element={<RepositoryList />} />
         <Route path='/sign-in' element={<SignIn />} />
