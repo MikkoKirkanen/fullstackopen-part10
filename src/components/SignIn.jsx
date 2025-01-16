@@ -4,7 +4,6 @@ import Text from './Text';
 import theme from '../../theme';
 import * as yup from 'yup';
 import useSignIn from '../hooks/useSignIn';
-import AuthStorage from '../utils/authStorage';
 import { useNavigate } from 'react-router-native';
 
 const styles = StyleSheet.create({
@@ -40,7 +39,7 @@ const validationSchema = yup.object().shape({
     .required('Password is required'),
 });
 
-const SignInForm = ({ onSubmit }) => {
+export const SignInForm = ({ onSubmit }) => {
   const formik = useFormik({
     initialValues,
     validationSchema,
