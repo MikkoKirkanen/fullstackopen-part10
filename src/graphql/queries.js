@@ -18,3 +18,15 @@ export const GET_REPOSITORIES = gql`
     }
   }
 `;
+
+export const GET_USERS = gql`
+  query {
+    users {
+      edges {
+        node {
+          username
+        }
+      }
+    }
+  }
+`;
