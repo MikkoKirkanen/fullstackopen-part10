@@ -4,6 +4,7 @@ import Text from '../Common/Text';
 import ReviewItem from '../Review/ReviewItem';
 import useRepository from '../../hooks/useRepository';
 import RepositoryItem from './RepositoryItem';
+import { useState } from 'react';
 
 const styles = StyleSheet.create({
   container: {
@@ -14,8 +15,12 @@ const styles = StyleSheet.create({
 const ViewRepository = () => {
   const params = useParams();
   const id = params.id || '';
+  const queryOptions = {
+    first: 4,
+    id,
+  };
 
-  const { data, loading, error } = useRepository(id);
+  const { repository, fetchMore, loading, error } = useRepository(queryOptions);
 
   if (loading) {
     return (
@@ -33,7 +38,10 @@ const ViewRepository = () => {
     );
   }
 
-  const { repository } = data;
+  const onEndReach = () => {
+    fetchMore();
+  };
+
   const reviews = repository?.reviews?.edges?.map((edge) => edge.node) || [];
 
   return (
@@ -43,6 +51,8 @@ const ViewRepository = () => {
       renderItem={({ item }) => <ReviewItem review={item} />}
       keyExtractor={({ id }) => id}
       ListHeaderComponent={() => <RepositoryItem item={repository} />}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   );
 };

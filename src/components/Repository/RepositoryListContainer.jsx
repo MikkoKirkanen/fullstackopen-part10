@@ -20,7 +20,12 @@ const styles = StyleSheet.create({
 
 const ItemSeparator = () => <View style={styles.separator} />;
 
-const RepositoryListContainer = ({ repositories, onSort, onFilterChange }) => {
+const RepositoryListContainer = ({
+  repositories,
+  onSort,
+  onFilterChange,
+  onEndReach,
+}) => {
   const navigate = useNavigate();
 
   // Get the nodes from the edges array
@@ -50,6 +55,8 @@ const RepositoryListContainer = ({ repositories, onSort, onFilterChange }) => {
           <RepositoryItem key={item.id} item={item} />
         </Pressable>
       )}
+      onEndReached={onEndReach}
+      onEndReachedThreshold={0.5}
     />
   );
 };

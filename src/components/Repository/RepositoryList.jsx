@@ -4,11 +4,12 @@ import { useState } from 'react';
 
 const RepositoryList = () => {
   const [queryOptions, setQueryOptions] = useState({
+    first: 4,
     orderBy: 'CREATED_AT',
     orderDirection: 'DESC',
     searchKeyword: '',
   });
-  const { data } = useRepositories(queryOptions);
+  const { repositories, fetchMore } = useRepositories(queryOptions);
 
   const onSort = (value) => {
     let orderBy = 'RATING_AVERAGE',
@@ -28,11 +29,16 @@ const RepositoryList = () => {
     setQueryOptions((state) => ({ ...state, searchKeyword }));
   };
 
+  const onEndReach = () => {
+    fetchMore();
+  };
+
   return (
     <RepositoryListContainer
-      repositories={data?.repositories}
+      repositories={repositories}
       onSort={onSort}
       onFilterChange={onFilterChange}
+      onEndReach={onEndReach}
     />
   );
 };
