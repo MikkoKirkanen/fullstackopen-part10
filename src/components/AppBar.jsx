@@ -2,8 +2,9 @@ import { View, StyleSheet, ScrollView, Pressable } from 'react-native';
 import Constants from 'expo-constants';
 import theme from '../../theme.js';
 import { Link } from 'react-router-native';
-import Text from './Text.jsx';
+import Text from './Common/Text.jsx';
 import useSignOut from '../hooks/useSignOut.js';
+import useMe from '../hooks/useMe.js';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,7 +17,9 @@ const styles = StyleSheet.create({
   },
 });
 
-const AppBar = ({ user }) => {
+const AppBar = () => {
+  const { data } = useMe();
+  const user = data?.me;
   const [signOut] = useSignOut();
 
   const logOut = async () => {
@@ -27,7 +30,27 @@ const AppBar = ({ user }) => {
     }
   };
 
-  const getSignView = () => {
+  const getCreateReviewButton = () => {
+    if (!user) return null;
+
+    return (
+      <Link to='create-review'>
+        <Text style={styles.link}>Create a review</Text>
+      </Link>
+    );
+  };
+
+  const getMyReviewsButton = () => {
+    if (!user) return null;
+
+    return (
+      <Link to='my-reviews'>
+        <Text style={styles.link}>My reviews</Text>
+      </Link>
+    );
+  };
+
+  const getSignInOutView = () => {
     if (!user) {
       return (
         <Link to='sign-in'>
@@ -41,13 +64,27 @@ const AppBar = ({ user }) => {
       </Pressable>
     );
   };
+
+  const getSignUpView = () => {
+    if (!user) {
+      return (
+        <Link to='sign-up'>
+          <Text style={styles.link}>Sign Up</Text>
+        </Link>
+      );
+    }
+  };
+
   return (
     <View style={styles.container}>
       <ScrollView horizontal>
         <Link to='/'>
           <Text style={styles.link}>Repositories</Text>
         </Link>
-        {getSignView()}
+        {getCreateReviewButton()}
+        {getMyReviewsButton()}
+        {getSignInOutView()}
+        {getSignUpView()}
       </ScrollView>
     </View>
   );

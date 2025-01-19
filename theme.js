@@ -1,12 +1,24 @@
 import { Platform } from 'react-native';
 
-const defaultPrimary = {
-  color: '#fff',
+const defaultInput = {
   padding: 16,
-  borderRadius: 6,
+  borderRadius: 8,
+  fontSize: 16,
+  color: '#fff',
+};
+
+const defaultPrimary = {
+  ...defaultInput,
+  backgroundColor: '#0d6efd',
 };
 
 const theme = {
+  container: {
+    display: 'flex',
+    gap: 16,
+    padding: 16,
+    backgroundColor: '#1b1f22',
+  },
   colors: {
     bodyBgColor: '#212529',
     itemBgColor: '#1b1f22',
@@ -16,18 +28,29 @@ const theme = {
     barColor: '#fff',
     barBgColor: '#8f00ff',
     text: '#fff',
+    error: 'red',
   },
   primaryBtn: {
     ...defaultPrimary,
-    backgroundColor: '#0d6efd',
-    textAlign: 'center',
+    display: 'flex',
+    alignItems: 'center',
+  },
+  primaryLabel: {
+    ...defaultPrimary,
+    fontSize: 14,
   },
   textInput: {
-    ...defaultPrimary,
+    ...defaultInput,
     borderWidth: 1,
     borderColor: '#586069',
     placeholderTextColor: '#586069',
     backgroundColor: '#1b1f22',
+  },
+  dangerBtn: {
+    ...defaultInput,
+    display: 'flex',
+    alignItems: 'center',
+    backgroundColor: '#dc3545',
   },
   fontSizes: {
     body: 14,
